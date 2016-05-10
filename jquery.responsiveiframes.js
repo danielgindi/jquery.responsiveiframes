@@ -12,6 +12,9 @@
         $('iframe,embed').not('.no-aspect-ratio').each(function() {
             
             var $el = $(this);
+            var maxWidth = parseFloat($el.css('width'))
+                ? $el.width()
+                : Infinity;
             var aspectRatio = $el.data('aspect-ratio');
             if (aspectRatio == null) {
                 aspectRatio = $el.height() / $el.width();
@@ -21,7 +24,7 @@
                     .css({ 'width': '', 'height': '' });
             }
             
-            var width = $el.parent().width();
+            var width = Math.min(maxWidth, $el.parent().width());
             $el
                 .width(width)
                 .height(width * $el.data('aspect-ratio'));
