@@ -12,13 +12,17 @@
         $('iframe,embed').not('.no-aspect-ratio').each(function() {
             
             var $el = $(this);
-            var maxWidth = parseFloat($el.css('width'))
-                ? $el.width()
-                : Infinity;
-            var aspectRatio = $el.data('aspect-ratio');
+            var aspectRatio = $el.data('aspect-ratio'), maxWidth = $el.data('max-width');
+            
             if (aspectRatio == null) {
+                
+                maxWidth = parseFloat($el.css('width'))
+                    ? $el.width()
+                    : Infinity;
+                
                 aspectRatio = $el.height() / $el.width();
-                $el.data('aspect-ratio', aspectRatio)
+                
+                $el.data({ 'aspect-ratio': aspectRatio, 'max-width': maxWidth })
                     .removeAttr('height')
                     .removeAttr('width')
                     .css({ 'width': '', 'height': '' });
