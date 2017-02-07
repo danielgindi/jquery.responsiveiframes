@@ -1,8 +1,7 @@
 // ==ClosureCompiler==
 // @externs_url https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/jquery-1.9.js
 // ==/ClosureCompiler==
-/** @preserve    
- * jquery.responsiveiframes
+/** @preserve jquery.responsiveiframes
  * git://github.com/danielgindi/jquery.responsiveiframes.git
  */
 (function (root, factory) {
