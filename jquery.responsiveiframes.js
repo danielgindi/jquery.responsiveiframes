@@ -2,10 +2,20 @@
 // @compilation_level ADVANCED_OPTIMIZATIONS
 // @externs_url https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/jquery-1.9.js
 // ==/ClosureCompiler==
-/** @preserve    Library by Daniel Cohen Gindi (danielgindi@gmail.com)
-    MIT License!
-*/
-(function ($) {
+/** @preserve    
+ * jquery.responsiveiframes
+ * git://github.com/danielgindi/jquery.responsiveiframes.git
+ */
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define('jquery.responsiveiframes', ['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory(require('jquery'));
+    } else {
+        /*root.responsiveiframes = */factory(root.jQuery);
+    }
+}(this, function ($) {
+    'use strict';
     
     $(window).on('resize load', function() {
           
@@ -37,4 +47,4 @@
         
     });
     
-})(jQuery);
+}));
