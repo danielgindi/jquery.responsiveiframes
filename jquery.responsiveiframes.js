@@ -17,9 +17,12 @@
     
     $(window).on('resize load', function() {
           
-        $('iframe,embed').not('.no-aspect-ratio').each(function() {
+        $('iframe,embed').not('.no-aspect-ratio').not('.disable-responsive-iframes').each(function() {
             
             var $el = $(this);
+            if ($el.parent().hasClass('backstretch-item')) return; // Avoid clashes with jquery.backstretch plugin
+            if ($el.closest('disable-responsive-iframes').length) return; // Allow disabling nested responsibe iframes
+            
             var aspectRatio = $el.data('aspect-ratio'), maxWidth = $el.data('max-width');
             
             if (aspectRatio == null) {
