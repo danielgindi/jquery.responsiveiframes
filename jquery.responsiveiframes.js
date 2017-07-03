@@ -39,11 +39,17 @@
                     .css({ 'width': '', 'height': '' });
             }
             
-            var width = Math.min(maxWidth, $el.parent().width());
-            $el
-                .width(width)
-                .height(width * $el.data('aspect-ratio'));
-                
+            var sizeParent = $el.parent();
+            while (sizeParent.css('display') === 'inline') {
+                sizeParent = sizeParent.parent();
+            }
+            
+            if (sizeParent.length) {
+                var width = Math.min(maxWidth, sizeParent.width());
+                $el
+                    .width(width)
+                    .height(width * $el.data('aspect-ratio'));
+            }
         });
         
     });
